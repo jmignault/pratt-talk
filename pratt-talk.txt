@@ -1,0 +1,394 @@
+John Mignault
+
+
+Table of Contents
+─────────────────
+
+1 ESDN
+.. 1.1 What is DPLA
+..... 1.1.1 The Digital Public Library of America
+..... 1.1.2 Aggregates metadata from digital collections presented in their portal at [[http://dp.la]]
+.. 1.2 The Hub model
+..... 1.2.1 Hubs supply DPLA with metadata
+..... 1.2.2 2 types of hub
+.. 1.3 What is ESDN
+..... 1.3.1 Empire State Digital Network
+.. 1.4 What is our workflow
+..... 1.4.1 regional council members contact their council's ESDN liaison
+..... 1.4.2 the liaison procures a letter giving permission to ingest their metadata
+..... 1.4.3 The provider's contact person contacts Chris Stanton, ESDN's Metadata Specialist
+..... 1.4.4 Chris works with the provider to normalize and standardize their data
+..... 1.4.5 Their data is mapped to the ESDN Metadata Application Profile (MAP)
+..... 1.4.6 it's an iterative process
+..... 1.4.7 it's a very manual process
+..... 1.4.8 often there will be multiple rounds of writing and rewriting the transforms
+.. 1.5 What is Repox
+..... 1.5.1 Repox is OAI aggregator software
+..... 1.5.2 originally written for the Europeana project
+..... 1.5.3 appeared to have been abandoned in 2014
+..... 1.5.4 used by a number of the "second wave" of hubs
+..... 1.5.5 support community has sprung up around it
+..... 1.5.6 recently development has been revived
+..... 1.5.7 DPLA has been rumored to be be working on an aggregator appliance
+.. 1.6 How does Repox work
+..... 1.6.1 harvests OAI feeds
+..... 1.6.2 XSLT
+.. 1.7 Lessons
+..... 1.7.1 Metadata Improvements
+..... 1.7.2 DPLA as a national project is actually improving metadata at the state and local levels
+..... 1.7.3 It provides an impetus for folks to address issues in their data
+..... 1.7.4 it provides justification to administrators to lend staff time to clean-up
+..... 1.7.5 it has led to the formation of the [ESDN metadata group]
+.. 1.8 What do we have in the works
+..... 1.8.1 Our own portal
+..... 1.8.2 DPLA Exhibitions
+.. 1.9 Questions?
+..... 1.9.1 Thanks!
+
+
+1 ESDN
+══════
+
+  • John Mignault
+  • ESDN Technology Specialist
+  • April 7, 2016
+
+
+1.1 What is DPLA
+────────────────
+
+1.1.1 The Digital Public Library of America
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+
+1.1.2 Aggregates metadata from digital collections presented in their portal at [[http://dp.la]]
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+
+1.2 The Hub model
+─────────────────
+
+1.2.1 Hubs supply DPLA with metadata
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+
+1.2.2 2 types of hub
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+◊ 1.2.2.1 content hubs
+
+  ◊ 1.2.2.1.1 large digital collections that provide metadata for their own content, such as NYPL or BHL
+
+
+◊ 1.2.2.2 service hubs
+
+  ◊ 1.2.2.2.1 Hubs that act as a conduit for DPLA ingestion, such as ESDN
+
+
+1.3 What is ESDN
+────────────────
+
+1.3.1 Empire State Digital Network
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+◊ 1.3.1.1 NY state service hub
+
+  ◊ 1.3.1.1.1 ESDN coordinates metadata harvest, transformation, and ingest for NY state
+
+    • ESDN provides services to state regional council members seeking
+      to get their metadata into DPLA
+
+
+  ◊ 1.3.1.1.2 formed in 2013
+
+
+  ◊ 1.3.1.1.3 second generation hub
+
+    ◊ 1.3.1.1.3.1 most of the first generation of DPLA hubs were digital collections websites that provided OAI feeds from their content management systems
+
+
+    ◊ 1.3.1.1.3.2 ESDN part of a "second wave" of hubs
+
+      ◊ 1.3.1.1.3.2.1 pure aggregators
+
+        • we don't host any content ourselves
+        • we have no public-facing properties
+        • at the present time we just harvest metadata, transform it
+          into a format suitable for ingest into DPLA which they harvest
+
+
+1.4 What is our workflow
+────────────────────────
+
+1.4.1 regional council members contact their council's ESDN liaison
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+
+1.4.2 the liaison procures a letter giving permission to ingest their metadata
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+
+1.4.3 The provider's contact person contacts Chris Stanton, ESDN's Metadata Specialist
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+
+1.4.4 Chris works with the provider to normalize and standardize their data
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+
+1.4.5 Their data is mapped to the ESDN Metadata Application Profile (MAP)
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+◊ 1.4.5.1 a variant of MODS
+
+
+◊ 1.4.5.2 which is itself mapped to the DPLA MAP
+
+
+1.4.6 it's an iterative process
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+
+1.4.7 it's a very manual process
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+
+1.4.8 often there will be multiple rounds of writing and rewriting the transforms
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+◊ 1.4.8.1 tweaking the output
+
+
+◊ 1.4.8.2 trying to strike a balance between asking the provider to tweak data and writing horrendous special cases
+
+
+◊ 1.4.8.3 mostly dependent on how consistently the data has been entered into the CMS
+
+
+◊ 1.4.8.4 minor inconsistencies can be written around
+
+
+◊ 1.4.8.5 major inconsistencies require the provider to go back and edit the data
+
+
+◊ 1.4.8.6 However, the date field is always insane
+
+  ◊ 1.4.8.6.1 roman numerals
+
+
+  ◊ 1.4.8.6.2 CONTENTdm timespans: 1932;1933;1934;1935;1936 to represent 1932-1936
+
+
+  ◊ 1.4.8.6.3 People will put anything and their dog in the date field ** tweet
+
+
+◊ 1.4.8.7 Once the data has been sufficiently massaged it is ingested on a semi-regular basis by DPLA
+
+
+◊ 1.4.8.8 Once ingested DPLA performs additional transformations and enrichments
+
+  ◊ 1.4.8.8.1 ESDN was a pilot project for DPLA's new ingestion system [Heidrun]
+
+
+◊ 1.4.8.9 The result is then QAd
+
+
+◊ 1.4.8.10 sometimes we need to go back and make additional tweaks
+
+
+◊ 1.4.8.11 The records then finally go live on DPLA
+
+
+1.5 What is Repox
+─────────────────
+
+1.5.1 Repox is OAI aggregator software
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+
+1.5.2 originally written for the Europeana project
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+
+1.5.3 appeared to have been abandoned in 2014
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+
+1.5.4 used by a number of the "second wave" of hubs
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+
+1.5.5 support community has sprung up around it
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+◊ 1.5.5.1 has a number of quirks
+
+
+◊ 1.5.5.2 everyone hates it
+
+
+◊ 1.5.5.3 everyone uses it
+
+
+1.5.6 recently development has been revived
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+
+1.5.7 DPLA has been rumored to be be working on an aggregator appliance
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+◊ 1.5.7.1 the fabled and greatly desired "Repox killer"
+
+
+◊ 1.5.7.2 part of the Hybox project
+
+
+◊ 1.5.7.3 rumors of its birth are greatly exaggerated
+
+
+1.6 How does Repox work
+───────────────────────
+
+1.6.1 harvests OAI feeds
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+◊ 1.6.1.1 we define "data sets" that specify the incoming and outgoing formats depending on the CMS in use
+
+
+◊ 1.6.1.2 we then write XSL stylesheets that transform the incoming to the outgoing format
+
+
+◊ 1.6.1.3 we associate those stylesheets with the data set
+
+
+◊ 1.6.1.4 when DPLA requests data the outgoing format is sent
+
+
+1.6.2 XSLT
+╌╌╌╌╌╌╌╌╌╌
+
+◊ 1.6.2.1 we built on the great work done at NCDHC
+
+
+◊ 1.6.2.2 we forked their Github repository of XSLT style-sheets for use with Repox
+
+
+◊ 1.6.2.3 NCDHC harvests multiple CONTENTdm repositories, so their stylesheets were written for use with Cdm
+
+
+◊ 1.6.2.4 Since ESDN harvests metadata from a number of different CMSes we use an include model that provides base templates
+
+
+◊ 1.6.2.5 our repository is on Github at [[http://github.com/esdnhub/dpla-custom-repox-xslt]]
+
+
+1.7 Lessons
+───────────
+
+1.7.1 Metadata Improvements
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+
+1.7.2 DPLA as a national project is actually improving metadata at the state and local levels
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+
+1.7.3 It provides an impetus for folks to address issues in their data
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+
+1.7.4 it provides justification to administrators to lend staff time to clean-up
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+
+1.7.5 it has led to the formation of the [ESDN metadata group]
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+◊ 1.7.5.1 creating best practices for creating shareable metadata.
+
+
+1.8 What do we have in the works
+────────────────────────────────
+
+1.8.1 Our own portal
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+◊ 1.8.1.1 Plans to work on a NY state wide search portal
+
+
+◊ 1.8.1.2 sort of a "tiny DPLA" for NY state
+
+
+◊ 1.8.1.3 our partners need reporting and statistics tools
+
+
+◊ 1.8.1.4 we attempted to build a basic tool
+
+
+◊ 1.8.1.5 the "collstool"
+
+  ◊ 1.8.1.5.1 based on Repox output
+
+
+  ◊ 1.8.1.5.2 implemented in Jekyll
+
+
+  ◊ 1.8.1.5.3 difficult to achieve using only MODS data in XML
+
+
+  ◊ 1.8.1.5.4 ungainly, manual process that output inaccurate results
+
+
+  ◊ 1.8.1.5.5 source available at [[http://github.com/ESDNHub/collstool]]
+
+
+◊ 1.8.1.6 Development work has just begun
+
+  ◊ 1.8.1.6.1 Built on the Hydra platform
+
+
+  ◊ 1.8.1.6.2 consuming ESDN data from the DPLA API
+
+
+  ◊ 1.8.1.6.3 with additional enrichments
+
+    ◊ 1.8.1.6.3.1 Sub-collection info
+
+
+    ◊ 1.8.1.6.3.2 Council info
+
+
+    ◊ 1.8.1.6.3.3 reporting capabilities
+
+
+◊ 1.8.1.7 Initial release expected later this summer
+
+
+1.8.2 DPLA Exhibitions
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+◊ 1.8.2.1 Avilable at [[http://dp.la/exhibitions]]
+
+
+◊ 1.8.2.2 Built on Omeka ([[http://omeka.org]])
+
+
+◊ 1.8.2.3 ESDN will begin providing DPLA exhibition hosting for partners
+
+
+◊ 1.8.2.4 Later in 2016
+
+
+1.9 Questions?
+──────────────
+
+1.9.1 Thanks!
+╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+◊ 1.9.1.1 John Mignault
+
+
+◊ 1.9.1.2 jmignault@metro.org
+
+
+◊ 1.9.1.3 [[http://empirestate.digital]]

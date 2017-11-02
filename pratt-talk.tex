@@ -1,0 +1,337 @@
+% Created 2016-11-15 Tue 07:12
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{John Mignault}
+\date{\today}
+\title{DPLA/ESDN/Metadata}
+\hypersetup{
+ pdfauthor={John Mignault},
+ pdftitle={DPLA/ESDN/Metadata},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.1.1 (Org mode 9.0)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section*{What is DPLA?}
+\label{sec:org86cfb0f}
+\begin{itemize}
+\item The Digital Public Library of America
+\begin{itemize}
+\item A national digital collections project
+\item Aggregates metadata from digital collections presented in their portal at \href{http://dp.la}{\url{http://dp.la}}
+\end{itemize}
+\end{itemize}
+
+\section*{The Hub model}
+\label{sec:orgbf61d68}
+\begin{itemize}
+\item Hubs supply DPLA with metadata
+\begin{itemize}
+\item 2 types of hub
+\begin{itemize}
+\item Content hubs
+\begin{itemize}
+\item large digital collections that provide metadata for their own content, such as NYPL or BHL
+\end{itemize}
+\item Service hubs 
+\begin{itemize}
+\item Hubs that act as a conduit for DPLA ingestion, such as ESDN
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\section*{What is ESDN?}
+\label{sec:org070c9b1}
+\begin{itemize}
+\item Empire State Digital Network
+\begin{itemize}
+\item NY state service hub
+\item formed in 2013
+\end{itemize}
+\item ESDN coordinates metadata harvest, transformation, and ingest for NY state
+\item ESDN provides services to state regional council (ESLN) members seeking to get their metadata into
+DPLA
+\item Currently funded by and based at METRO
+\end{itemize}
+
+\subsection*{Second generation hub}
+\label{sec:orgfe7e1d4}
+\begin{itemize}
+\item Most of the first generation of DPLA hubs were digital collections websites that provided OAI feeds from their content management systems
+\begin{itemize}
+\item Biodiversity Heritage Library, NYPL, Digital Commonwealth (BPL)
+\end{itemize}
+\item ESDN part of a "second wave" of hubs
+\end{itemize}
+
+\subsection*{The "Second Wave"}
+\label{sec:orgca3b179}
+\begin{itemize}
+\item Pure aggregators
+\begin{itemize}
+\item we don't host any content ourselves
+\item we have no public interfaces
+\end{itemize}
+\item Currently we harvest partner metadata and transform it into a DPLA-approved format which they then harvest
+\end{itemize}
+
+\section*{What is our workflow?}
+\label{sec:org38f6761}
+\section*{Prep - Harvest - Transformation - Ingest}
+\label{sec:org7be12ad}
+\subsection*{Prep}
+\label{sec:orga9292e6}
+\begin{itemize}
+\item Regional council members contact their ESDN liaison
+\item The member provides a letter granting permission to use their metadata
+\item The provider's contact person contacts Chris Stanton, ESDN's Metadata Specialist
+\item Chris works with the provider to normalize and standardize their data
+\begin{itemize}
+\item Will often work on normalizations and tweaks using OpenRefine
+\end{itemize}
+\end{itemize}
+
+\subsection*{Harvest}
+\label{sec:org643a4cf}
+\begin{itemize}
+\item We then pull their data into Repox
+\begin{itemize}
+\item By various methods
+\begin{itemize}
+\item But mostly and ultimately via OAI-PMH
+\item There are a few others, like CSV import into Omeka
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\subsection*{Transformation}
+\label{sec:org0676c67}
+\begin{itemize}
+\item Their data is mapped to the ESDN Metadata Application Profile (MAP)
+\begin{itemize}
+\item a variant of MODS
+\item which is itself mapped to the DPLA MAP
+\item it's an iterative process
+\begin{itemize}
+\item often there will be multiple rounds of writing and rewriting the transforms
+\end{itemize}
+\item it's a very manual process
+\begin{itemize}
+\item tweaking the output
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\subsection*{Ingest}
+\label{sec:org326f34b}
+\begin{itemize}
+\item Once the data has been sufficiently massaged it is ingested by DPLA
+\item They perform additional transformations and enrichments
+\item The result is then QA'd
+\begin{itemize}
+\item sometimes we need to go back and make additional adjustments
+\end{itemize}
+\item The records then finally go live on DPLA
+\end{itemize}
+
+\section*{Issues}
+\label{sec:org28ae07e}
+\subsection*{what are we trying to achieve?}
+\label{sec:org399c97a}
+\begin{itemize}
+\item We try to strike a balance between asking the provider to normalize data and writing horrendous special cases
+\item Problems are mostly dependent on how consistently the data has been entered into the CMS
+\begin{itemize}
+\item minor inconsistencies can be written around
+\item major inconsistencies require the provider to go back and edit the data
+\end{itemize}
+\end{itemize}
+
+\subsection*{Sidebar: the date field, aka "dumpster fire"}
+\label{sec:orgd0c6fb8}
+\begin{itemize}
+\item roman numerals: MCMXVIII
+\item natural language dates: June 16, 1904
+\item CONTENTdm timespans: 1932;1933;1934;1935;1936 to represent 1932-1936
+\item People will put anything and their dog in the date field
+\end{itemize}
+
+\section*{What is Repox?}
+\label{sec:org3219041}
+\subsection*{OAI aggregator software}
+\label{sec:org6aae1f5}
+\subsubsection*{Past}
+\label{sec:org8d5d59f}
+\begin{itemize}
+\item originally written for the Europeana project
+\item appeared to have been abandoned in 2014
+\begin{itemize}
+\item as such, documentation is spotty
+\end{itemize}
+\item used by a number of more recent DPLA hubs
+\end{itemize}
+\subsubsection*{Present}
+\label{sec:org6d2ac5d}
+\begin{itemize}
+\item DPLA hub user community
+\begin{itemize}
+\item mailing list
+\end{itemize}
+\item Has a number of undocumented quirks
+\begin{itemize}
+\item the "records per page" quirk
+\end{itemize}
+\item support folklore has sprung up around it
+\begin{itemize}
+\item everyone uses it by necessity
+\item its relative limbo makes it less than ideal
+\end{itemize}
+\end{itemize}
+\subsubsection*{Future}
+\label{sec:org5cfce3d}
+\begin{itemize}
+\item the long-awaited "Repox killer"
+\begin{itemize}
+\item DPLA has been rumored to be be working on an aggregator appliance
+\item part of the Hydra in a Box project
+\item rumors of its birth are greatly exaggerated
+\end{itemize}
+\end{itemize}
+
+\section*{How does Repox work?}
+\label{sec:orgf65f161}
+\subsection*{Overview}
+\label{sec:org9c65d3e}
+\begin{itemize}
+\item We harvest partner feeds in various formats and protocols
+\item Our outgoing format is always ESDN MAP MODS
+\item we define "data sets" that specify the incoming format depending on the CMS in use
+\item we then write XSL stylesheets that transform the harvested data to ESDN MAP MODS
+\item we attach those stylesheets to the data set
+\item when DPLA ingests data they harvest the entire repository in ESDN MAP format
+\end{itemize}
+
+\subsection*{XSLT}
+\label{sec:orgc9706bf}
+\begin{itemize}
+\item we built on the great work done at NCDHC
+\item we forked their Github repository of XSLT style-sheets for use with Repox
+\item NCDHC mainly works with CONTENTdm providers
+\item As the number of different CMSes we saw grew, we developed a CSS-like cascading model for stylesheets
+\item our repository is on Github at \href{http://github.com/esdnhub/dpla-custom-repox-xslt}{\url{http://github.com/esdnhub/dpla-custom-repox-xslt}}
+\end{itemize}
+
+\section*{Lessons}
+\label{sec:org16bfd19}
+\subsection*{Metadata Improvements}
+\label{sec:orgde3f02e}
+\begin{itemize}
+\item DPLA as a national project is actually improving metadata at the state and local levels
+\begin{itemize}
+\item It provides an impetus for folks to address issues in their data
+\item it provides justification to administrators to lend staff time to clean-up
+\end{itemize}
+\item it has led to the formation of the \href{http://empirestate.digital/governance/metadata-working-group/}{ESDN metadata group} (\href{http://empirestate.digital/governance/metadata-working-group/}{\url{http://empirestate.digital/governance/metadata-working-group/}}
+\begin{itemize}
+\item creating best practices for creating shareable metadata.
+\end{itemize}
+\end{itemize}
+
+\section*{Local history, global data}
+\label{sec:org4cc5d3e}
+\subsection*{Data re-use}
+\label{sec:org812a0c0}
+\begin{itemize}
+\item No public front-end
+\item scope of available data constrained by MAP
+\begin{itemize}
+\item repox cannot link to external resources
+\begin{itemize}
+\item no LOD
+\item limitation of XSLT
+\end{itemize}
+\end{itemize}
+\item our partners need reporting and statistics tools
+\item so, we attempted to build a basic tool
+\end{itemize}
+
+\subsection*{The "collstool"}
+\label{sec:org99cdf0f}
+\begin{itemize}
+\item uses MODS data harvested from our Repox instance
+\begin{itemize}
+\item XML -> JSON -> YAML using XSLT and json2yaml
+\item Jekyll reads resulting YAML file
+\end{itemize}
+\item ungainly, manual process that output inaccurate results
+\item Running on Github Pages at \href{http://esdnhub.github.io/collstool/}{\url{http://esdnhub.github.io/collstool/}}
+\item source available at \href{http://github.com/ESDNHub/collstool}{\url{http://github.com/ESDNHub/collstool}}
+\end{itemize}
+
+\subsection*{The ESDN portal}
+\label{sec:org7ace97a}
+\begin{itemize}
+\item Plans to work on a NY state wide search portal
+\item sort of a "tiny DPLA" for NY state
+\item Blacklight Rails application
+\begin{itemize}
+\item Based on Ben Armintor's "DBLA" gem \href{https://github.com/barmintor/dbla}{\url{https://github.com/barmintor/dbla}}
+\end{itemize}
+\end{itemize}
+
+\subsubsection*{How does it work?}
+\label{sec:org6a2481c}
+\begin{itemize}
+\item makes Blacklight think it's talking to a solr repository
+\begin{itemize}
+\item when it's actually talking to the DPLA API
+\end{itemize}
+\item extended to integrate additional "external vocabularies"
+\begin{itemize}
+\item Sub-collection info
+\item Council info
+\item Possibly LCSH
+\end{itemize}
+\item Build additional reporting and search capabilities
+\item Prototype is up at \href{https://afternoon-shelf-4328.herokuapp.com}{\url{https://afternoon-shelf-4328.herokuapp.com}}
+\end{itemize}
+
+\subsection*{DPLA Exhibitions}
+\label{sec:org2e21526}
+\begin{itemize}
+\item Avilable at \href{http://dp.la/exhibitions}{\url{http://dp.la/exhibitions}}
+\item Built on Omeka (\href{http://omeka.org}{\url{http://omeka.org}})
+\item ESDN will begin providing DPLA exhibition hosting for partners
+\begin{itemize}
+\item Later in 2016
+\end{itemize}
+\end{itemize}
+
+\section*{Questions?}
+\label{sec:orgd4a06c2}
+\begin{itemize}
+\item Thanks!
+\item John Mignault (jmignault@metro.org)
+\item \href{http://metro.org}{METRO (\url{http://metro.org})}
+\item \href{http://empirestate.digital}{ESDN (\url{http://empirestate.digital})}
+\item \href{http://esln.org}{Empire State Library Network (esln.org)}
+\item \href{http://dp.la}{DPLA (\url{http://dp.la})}
+\end{itemize}
+\end{document}
