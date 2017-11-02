@@ -121,8 +121,8 @@
    - when DPLA ingests data they harvest the entire repository in ESDN MAP format
 
 *** XSLT
-   - we built on the great work done at NCDHC
-   - we forked their Github repository of XSLT style-sheets for use with Repox
+   - we built on the great work being done at NCDHC
+   - we forked their Github repository of XSLT stylesheets for use with Repox
    - NCDHC mainly works with CONTENTdm providers
    - As the number of different CMSes we saw grew, we developed a CSS-like cascading model for stylesheets
    - our repository is on Github at [[http://github.com/esdnhub/dpla-custom-repox-xslt][http://github.com/esdnhub/dpla-custom-repox-xslt]]
@@ -185,6 +185,7 @@
       - First version only included ESDN records
         - Expanded to include NYPL
       - All things New York, not necessarily constrained by institutions in NY State
+      - Aggregating and providing "local vocabularies"
 
 ** Thank you!
    - John Mignault (jmignault@metro.org)
