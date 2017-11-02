@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>DPLA/ESDN/Metadata</title>
+<meta name="author" content="(John Mignault)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.css"/>
+
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'http://cdn.jsdelivr.net/reveal.js/3.0.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">DPLA/ESDN/Metadata</h1><h2 class="author">John Mignault</h2><p class="date">Created: 2017-04-05 Wed 14:47</p>
+</section>
+
+<section>
+<section id="slide-orgee6aa77">
+<h2 id="orgee6aa77">What is DPLA?</h2>
+<ul>
+<li>The Digital Public Library of America
+<ul>
+<li>A national digital collections project</li>
+<li>Aggregates metadata from digital collections which they present in their portal at <a href="http://dp.la"><a href="http://dp.la">http://dp.la</a></a></li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org015bfb0">
+<h2 id="org015bfb0">The Hub model</h2>
+<ul>
+<li>Hubs supply DPLA with metadata
+<ul>
+<li>2 types of hub
+<ul>
+<li>Content hubs
+<ul>
+<li>large digital collections that provide metadata for their own content, such as NYPL or BHL</li>
+
+</ul></li>
+<li>Service hubs
+<ul>
+<li>Hubs that harvest, normalize, and aggregate metadata for other institutions</li>
+<li>They then provide that aggregated metadata to DPLA</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd7787c3">
+<h2 id="orgd7787c3">What is ESDN?</h2>
+<ul>
+<li>Empire State Digital Network
+<ul>
+<li>NY state service hub</li>
+<li>formed in 2013</li>
+
+</ul></li>
+<li>ESDN coordinates metadata harvest, transformation, and ingest for NY state</li>
+<li>ESDN provides services to state regional councils whose members want to provide their metadata to
+DPLA</li>
+<li>Currently funded by and based at METRO</li>
+
+</ul>
+
+</section>
+<section id="slide-org066bd09">
+<h3 id="org066bd09">Second generation hub</h3>
+<ul>
+<li>Most of the first generation of DPLA hubs were existing digital collections websites that provided OAI feeds from their content management systems
+<ul>
+<li>Biodiversity Heritage Library, NYPL, Digital Commonwealth (BPL)</li>
+
+</ul></li>
+<li>ESDN part of a "second wave" of hubs</li>
+
+</ul>
+
+</section>
+<section id="slide-org5143c54">
+<h3 id="org5143c54">The "Second Wave"</h3>
+<ul>
+<li>Pure aggregators
+<ul>
+<li>we don't host any content ourselves</li>
+<li>we have no public interfaces (though we're working on it)</li>
+
+</ul></li>
+<li>Currently we harvest partner metadata and transform it into a DPLA-approved format which they then harvest</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org27677e8">
+<h2 id="org27677e8">What is our workflow?</h2>
+</section>
+</section>
+<section>
+<section id="slide-org38123db">
+<h2 id="org38123db">Prep - Harvest - Transform - Ingest</h2>
+<div class="outline-text-2" id="text-org38123db">
+</div></section>
+<section id="slide-orgc2e2215">
+<h3 id="orgc2e2215">Prep</h3>
+<ul>
+<li>Regional council members contact their ESDN liaison</li>
+<li>The member provides a letter granting permission to use their metadata</li>
+<li>The provider's contact person gets in touch with ESDN's Metadata Specialist</li>
+<li>Who then works with the provider to normalize and standardize their data</li>
+<li>Their metadata is normalized to ESDN's Metadata Application Profile (MAP)</li>
+
+</ul>
+
+</section>
+<section id="slide-org64d020d">
+<h3 id="org64d020d">Harvest</h3>
+<ul>
+<li>We then ingest their data into REPOX
+<ul>
+<li>Using various methods and protocols
+<ul>
+<li>But mostly and ultimately via OAI-PMH</li>
+<li>There are a few others such as the Brooklyn Historical Society</li>
+<li>They use the museum software Past Perfect, which does not offer OAI-PMH feeds</li>
+<li>So they provide us with comma separated value files</li>
+<li>We import those into a private Omeka installation</li>
+<li>We then import their records into REPOX via OAI-PMH from Omeka</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-orgb421a8a">
+<h3 id="orgb421a8a">Transform</h3>
+<ul>
+<li>Their data is mapped to the ESDN Metadata Application Profile (MAP)
+<ul>
+<li>a variant of MODS</li>
+<li>which is itself mapped to the DPLA MAP</li>
+<li>We then run their data through XSLT stylesheets which convert it to ESDN MODS
+<ul>
+<li>it's an iterative process
+<ul>
+<li>often there will be multiple rounds of writing and rewriting the transforms</li>
+
+</ul></li>
+<li>it's a very manual process
+<ul>
+<li>tweaking the output</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org44ff264">
+<h3 id="org44ff264">Ingest</h3>
+<ul>
+<li>Once the data is reasonably clean it is ingested by DPLA</li>
+<li>They perform additional transformations and enrichments</li>
+<li>The resulting data set is then QA'd
+<ul>
+<li>Once in a while we need to go back and make additional adjustments</li>
+
+</ul></li>
+<li>The records then finally go live on DPLA</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd1121c6">
+<h2 id="orgd1121c6">Issues</h2>
+<div class="outline-text-2" id="text-orgd1121c6">
+</div></section>
+<section id="slide-org7f1f2f4">
+<h3 id="org7f1f2f4">what are we trying to achieve?</h3>
+<ul>
+<li>We try to strike a balance between asking the provider to normalize data and "writing around" the problems in our transformations</li>
+<li>Problems are mostly dependent on how consistently the data has been entered into the CMS
+<ul>
+<li>minor inconsistencies can be written around</li>
+<li>major inconsistencies require the provider to go back and edit the data</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-orge5454e2">
+<h3 id="orge5454e2">For example, the date field can vary widely</h3>
+<ul>
+<li>We've gotten Roman numerals: MCMXVIII</li>
+<li>Dates written in "natural language" style: June 16, 1904</li>
+<li>CONTENTdm timespans are formatted oddly: <code>1932;1933;1934;1935;1936</code> represents the span 1932-1936</li>
+<li>People will put anything and their dog in the date field</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orga285700">
+<h2 id="orga285700">What is REPOX?</h2>
+<div class="outline-text-2" id="text-orga285700">
+</div></section>
+<section id="slide-org039bbc8">
+<h3 id="org039bbc8">OAI aggregator software</h3>
+<div class="outline-text-3" id="text-org039bbc8">
+</div></section>
+<section id="slide-org508c9de">
+<h4 id="org508c9de">Past</h4>
+<ul>
+<li>originally written for the Europeana project</li>
+<li>appeared to have been abandoned in 2014
+<ul>
+<li>as such, documentation is spotty</li>
+
+</ul></li>
+<li>used by a number of more recent DPLA hubs</li>
+<li>Europeana has restarted development work</li>
+
+</ul>
+</section>
+<section id="slide-org1fd9dbe">
+<h4 id="org1fd9dbe">Present</h4>
+<ul>
+<li>DPLA hub user community
+<ul>
+<li>DPLA runs a repox-users mailing list</li>
+
+</ul></li>
+<li>The software has a number of undocumented quirks
+<ul>
+<li>The "records per page" quirk</li>
+
+</ul></li>
+<li>The user community has worked to accumulate a body of support
+<ul>
+<li>everyone uses it by necessity</li>
+<li>its relative limbo makes it less than ideal</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-orga54064a">
+<h4 id="orga54064a">Future</h4>
+<ul>
+<li>the long-needed "Repox replacement"
+<ul>
+<li>DPLA's aggregator software is in flux given personnel changes</li>
+<li>DPLA had been working for nearly 3 years on a new aggregator and harvest system</li>
+<li>Hubs are being moved off the new software back onto their original software</li>
+<li>While they work on the new new software, release date TBD</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orga67615d">
+<h2 id="orga67615d">How does REPOX work?</h2>
+<div class="outline-text-2" id="text-orga67615d">
+</div></section>
+<section id="slide-org60cdb20">
+<h3 id="org60cdb20">Overview</h3>
+<ul>
+<li>We harvest partner feeds in various formats and protocols</li>
+<li>We are liberal in what we accept and conservative in what we provide
+<ul>
+<li>Our outgoing format is always ESDN MAP MODS</li>
+
+</ul></li>
+<li>we define "data sets" that specify the incoming format depending on the CMS in use</li>
+<li>we then write XSL stylesheets that transform the harvested data to ESDN MAP MODS</li>
+<li>we attach those stylesheets to the data set</li>
+<li>when DPLA ingests data they harvest the entire repository in ESDN MAP format</li>
+
+</ul>
+
+</section>
+<section id="slide-org0cfc967">
+<h3 id="org0cfc967">XSLT</h3>
+<ul>
+<li>we built on the great work done at NCDHC</li>
+<li>we forked their Github repository of XSLT style-sheets for use with Repox</li>
+<li>NCDHC mainly works with CONTENTdm providers</li>
+<li>As the number of different CMSes we saw grew, we developed a CSS-like cascading model for stylesheets</li>
+<li>our repository is on Github at <a href="http://github.com/esdnhub/dpla-custom-repox-xslt"><a href="http://github.com/esdnhub/dpla-custom-repox-xslt">http://github.com/esdnhub/dpla-custom-repox-xslt</a></a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org84761e6">
+<h2 id="org84761e6">Lessons</h2>
+<div class="outline-text-2" id="text-org84761e6">
+</div></section>
+<section id="slide-org2d6b3ba">
+<h3 id="org2d6b3ba">Metadata Improvements</h3>
+<ul>
+<li>DPLA as a national project is actually improving metadata at the state and local levels
+<ul>
+<li>It provides an impetus for institutions to "groom" their metadata</li>
+<li>it provides justification to administrators to allocate staff time to this work</li>
+
+</ul></li>
+<li>it has led to the formation of the <a href="http://empirestate.digital/governance/metadata-working-group/">ESDN metadata group</a> (<a href="http://empirestate.digital/governance/metadata-working-group/"><a href="http://empirestate.digital/governance/metadata-working-group/">http://empirestate.digital/governance/metadata-working-group/</a></a>
+<ul>
+<li>creating best practices for creating shareable metadata.</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org36448e4">
+<h2 id="org36448e4">Local history, global data</h2>
+<div class="outline-text-2" id="text-org36448e4">
+</div></section>
+<section id="slide-org73b42bf">
+<h3 id="org73b42bf">Data re-use</h3>
+<ul>
+<li>ESDN has no public front-end</li>
+<li>The scope of our available data is constrained by what the DPLA MAP requires
+<ul>
+<li>REPOX cannot link to external resources
+<ul>
+<li>XSLT has no facility for connection to networked resources</li>
+<li>Thus, no linked data</li>
+
+</ul></li>
+
+</ul></li>
+<li>Our partners need reporting and statistical tools on their collections in DPLA</li>
+<li>To address this issue we attempted to build a basic tool</li>
+
+</ul>
+
+</section>
+<section id="slide-orgba04932">
+<h3 id="orgba04932">The "collstool"</h3>
+<ul>
+<li>Built using Jekyll, a Ruby templating system for producing simple static websites</li>
+<li>uses ESDN MAP MODS data harvested from our REPOX instance
+<ul>
+<li>Complicated procession</li>
+<li>XML -&gt; JSON -&gt; YAML using XSLT and json2yaml</li>
+<li>Jekyll reads resulting YAML file</li>
+
+</ul></li>
+<li>ungainly, manual process that output inaccurate results
+<ul>
+<li>Running on Github Pages at <a href="http://esdnhub.github.io/collstool/"><a href="http://esdnhub.github.io/collstool/">http://esdnhub.github.io/collstool/</a></a></li>
+<li>source available at <a href="http://github.com/ESDNHub/collstool"><a href="http://github.com/ESDNHub/collstool">http://github.com/ESDNHub/collstool</a></a></li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-orga9340aa">
+<h3 id="orga9340aa">DPLA Exhibitions</h3>
+<ul>
+<li>Available at <a href="http://dp.la/exhibitions"><a href="http://dp.la/exhibitions">http://dp.la/exhibitions</a></a></li>
+<li>Built on Omeka (<a href="http://omeka.org"><a href="http://omeka.org">http://omeka.org</a></a>)</li>
+<li>ESDN will begin providing DPLA exhibition hosting for partners
+<ul>
+<li>Later in 2017</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-orgbc228ec">
+<h3 id="orgbc228ec">The ESDN portal</h3>
+<ul>
+<li>Plans to work on a NY state wide search portal</li>
+<li>sort of a "tiny DPLA" for NY state</li>
+<li>Blacklight Rails application
+<ul>
+<li>Based on Ben Armintor's "DBLA" gem <a href="https://github.com/barmintor/dbla"><a href="https://github.com/barmintor/dbla">https://github.com/barmintor/dbla</a></a></li>
+
+</ul></li>
+<li>makes Blacklight think it's talking to a solr repository
+<ul>
+<li>when it's actually talking to the DPLA API</li>
+
+</ul></li>
+<li>Available at <a href="http://esdn.metro.org">http://esdn.metro.org</a></li>
+
+</ul>
+
+</section>
+<section id="slide-org577ae38">
+<h3 id="org577ae38">Future development</h3>
+<ul>
+<li>Harvest and persist records
+<ul>
+<li>limitations of DPLA API</li>
+<li>cannot enrich records otherwise</li>
+
+</ul></li>
+<li>extended to integrate additional "external vocabularies"
+<ul>
+<li>Sub-collection info</li>
+<li>Council info</li>
+<li>Build additional reporting and search capabilities</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org42f4741">
+<h3 id="org42f4741">Rethinking the metadata portal</h3>
+<ul>
+<li>First version only included ESDN records
+<ul>
+<li>Expanded to include NYPL</li>
+
+</ul></li>
+<li>All things New York, not necessarily constrained by institutions in NY State</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgaeb4172">
+<h2 id="orgaeb4172">Thank you!</h2>
+<ul>
+<li>John Mignault (jmignault@metro.org)</li>
+<li><a href="http://metro.org">METRO (<a href="http://metro.org">http://metro.org</a>)</a></li>
+<li><a href="http://empirestate.digital">ESDN (<a href="http://empirestate.digital">http://empirestate.digital</a>)</a></li>
+<li><a href="http://esln.org">Empire State Library Network (esln.org)</a></li>
+<li><a href="http://dp.la">DPLA (<a href="http://dp.la">http://dp.la</a>)</a></li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/head.min.js"></script>
+<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

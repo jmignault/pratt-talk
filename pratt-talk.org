@@ -1,0 +1,192 @@
+#+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/3.0.0/
+#+OPTIONS: num:nil toc:nil
+#+TITLE: DPLA/ESDN/Metadata
+#+AUTHOR: John Mignault
+#+EMAIL: jmignault@metro.org
+
+** What is DPLA?
+  - The Digital Public Library of America
+    - A national digital collections project
+    - Aggregates metadata from digital collections which they present in their portal at [[http://dp.la][http://dp.la]]
+
+** The Hub model
+   - Hubs supply DPLA with metadata
+     - 2 types of hub
+       - Content hubs
+         - large digital collections that provide metadata for their own content, such as NYPL or BHL
+       - Service hubs
+         - Hubs that harvest, normalize, and aggregate metadata for other institutions
+         - They then provide that aggregated metadata to DPLA
+
+** What is ESDN?
+  - Empire State Digital Network
+    - NY state service hub
+    - formed in 2013
+  - ESDN coordinates metadata harvest, transformation, and ingest for NY state
+  - ESDN provides services to state regional councils whose members want to provide their metadata to
+    DPLA
+  - Currently funded by and based at METRO
+
+*** Second generation hub
+   - Most of the first generation of DPLA hubs were existing digital collections websites that provided OAI feeds from their content management systems
+     - Biodiversity Heritage Library, NYPL, Digital Commonwealth (BPL)
+   - ESDN part of a "second wave" of hubs
+
+*** The "Second Wave"
+   - Pure aggregators
+     - we don't host any content ourselves
+     - we have no public interfaces (though we're working on it)
+   - Currently we harvest partner metadata and transform it into a DPLA-approved format which they then harvest
+
+** What is our workflow?
+** Prep - Harvest - Transform - Ingest
+*** Prep
+   - Regional council members contact their ESDN liaison
+   - The member provides a letter granting permission to use their metadata
+   - The provider's contact person gets in touch with ESDN's Metadata Specialist
+   - Who then works with the provider to normalize and standardize their data
+   - Their metadata is normalized to ESDN's Metadata Application Profile (MAP)
+
+*** Harvest
+   - We then ingest their data into REPOX
+     - Using various methods and protocols
+       - But mostly and ultimately via OAI-PMH
+       - There are a few others such as the Brooklyn Historical Society
+       - They use the museum software Past Perfect, which does not offer OAI-PMH feeds
+       - So they provide us with comma separated value files
+       - We import those into a private Omeka installation
+       - We then import their records into REPOX via OAI-PMH from Omeka
+
+*** Transform
+   - Their data is mapped to the ESDN Metadata Application Profile (MAP)
+     - a variant of MODS
+     - which is itself mapped to the DPLA MAP
+     - We then run their data through XSLT stylesheets which convert it to ESDN MODS
+       - it's an iterative process
+         - often there will be multiple rounds of writing and rewriting the transforms
+       - it's a very manual process
+         - tweaking the output
+
+*** Ingest
+    - Once the data is reasonably clean it is ingested by DPLA
+    - They perform additional transformations and enrichments
+    - The resulting data set is then QA'd
+      - Once in a while we need to go back and make additional adjustments
+    - The records then finally go live on DPLA
+
+** Issues
+*** what are we trying to achieve?
+    - We try to strike a balance between asking the provider to normalize data and "writing around" the problems in our transformations 
+    - Problems are mostly dependent on how consistently the data has been entered into the CMS
+      - minor inconsistencies can be written around
+      - major inconsistencies require the provider to go back and edit the data
+
+*** For example, the date field can vary widely
+    + We've gotten Roman numerals: MCMXVIII
+    + Dates written in "natural language" style: June 16, 1904
+    + CONTENTdm timespans are formatted oddly: ~1932;1933;1934;1935;1936~ represents the span 1932-1936
+    + People will put anything and their dog in the date field 
+
+** What is REPOX?
+*** OAI aggregator software
+**** Past
+    - originally written for the Europeana project
+    - appeared to have been abandoned in 2014
+      - as such, documentation is spotty
+    - used by a number of more recent DPLA hubs
+    - Europeana has restarted development work
+**** Present
+    - DPLA hub user community
+      -  DPLA runs a repox-users mailing list
+    - The software has a number of undocumented quirks
+      - The "records per page" quirk
+    - The user community has worked to accumulate a body of support
+      - everyone uses it by necessity
+      - its relative limbo makes it less than ideal
+**** Future
+    - the long-needed "Repox replacement"
+      - DPLA's aggregator software is in flux given personnel changes
+      - DPLA had been working for nearly 3 years on a new aggregator and harvest system
+      - Hubs are being moved off the new software back onto their original software
+      - While they work on the new new software, release date TBD
+
+** How does REPOX work?
+*** Overview
+   - We harvest partner feeds in various formats and protocols
+   - We are liberal in what we accept and conservative in what we provide
+     - Our outgoing format is always ESDN MAP MODS
+   - we define "data sets" that specify the incoming format depending on the CMS in use
+   - we then write XSL stylesheets that transform the harvested data to ESDN MAP MODS
+   - we attach those stylesheets to the data set
+   - when DPLA ingests data they harvest the entire repository in ESDN MAP format
+
+*** XSLT
+   - we built on the great work done at NCDHC
+   - we forked their Github repository of XSLT style-sheets for use with Repox
+   - NCDHC mainly works with CONTENTdm providers
+   - As the number of different CMSes we saw grew, we developed a CSS-like cascading model for stylesheets
+   - our repository is on Github at [[http://github.com/esdnhub/dpla-custom-repox-xslt][http://github.com/esdnhub/dpla-custom-repox-xslt]]
+
+** Lessons
+*** Metadata Improvements
+   - DPLA as a national project is actually improving metadata at the state and local levels
+     - It provides an impetus for institutions to "groom" their metadata
+     - it provides justification to administrators to allocate staff time to this work
+   - it has led to the formation of the [[http://empirestate.digital/governance/metadata-working-group/][ESDN metadata group]] ([[http://empirestate.digital/governance/metadata-working-group/][http://empirestate.digital/governance/metadata-working-group/]]
+     - creating best practices for creating shareable metadata.
+
+** Local history, global data
+*** Data re-use
+    - ESDN has no public front-end
+    - The scope of our available data is constrained by what the DPLA MAP requires
+      - REPOX cannot link to external resources
+        - XSLT has no facility for connection to networked resources
+        - Thus, no linked data
+    - Our partners need reporting and statistical tools on their collections in DPLA
+    - To address this issue we attempted to build a basic tool
+
+*** The "collstool"
+    - Built using Jekyll, a Ruby templating system for producing simple static websites
+    - uses ESDN MAP MODS data harvested from our REPOX instance
+      - Complicated procession
+      - XML -> JSON -> YAML using XSLT and json2yaml
+      - Jekyll reads resulting YAML file
+    - ungainly, manual process that output inaccurate results
+      - Running on Github Pages at [[http://esdnhub.github.io/collstool/][http://esdnhub.github.io/collstool/]]
+      - source available at [[http://github.com/ESDNHub/collstool][http://github.com/ESDNHub/collstool]]
+
+*** DPLA Exhibitions
+    - Available at [[http://dp.la/exhibitions][http://dp.la/exhibitions]]
+    - Built on Omeka ([[http://omeka.org][http://omeka.org]])
+    - ESDN will begin providing DPLA exhibition hosting for partners
+      - Later in 2017
+
+***  The ESDN portal
+    - Plans to work on a NY state wide search portal
+    - sort of a "tiny DPLA" for NY state
+    - Blacklight Rails application
+      - Based on Ben Armintor's "DBLA" gem [[https://github.com/barmintor/dbla][https://github.com/barmintor/dbla]]
+    - makes Blacklight think it's talking to a solr repository
+      - when it's actually talking to the DPLA API
+    - Available at http://esdn.metro.org
+
+*** Future development
+    - Harvest and persist records
+      - limitations of DPLA API
+      - cannot enrich records otherwise
+    - extended to integrate additional "external vocabularies"
+      - Sub-collection info
+      - Council info
+      - Build additional reporting and search capabilities
+
+*** Rethinking the metadata portal
+      - First version only included ESDN records
+        - Expanded to include NYPL
+      - All things New York, not necessarily constrained by institutions in NY State
+
+** Thank you!
+   - John Mignault (jmignault@metro.org)
+   - [[http://metro.org][METRO (http://metro.org)]]
+   - [[http://empirestate.digital][ESDN (http://empirestate.digital)]]
+   - [[http://esln.org][Empire State Library Network (esln.org)]]
+   - [[http://dp.la][DPLA (http://dp.la)]]
