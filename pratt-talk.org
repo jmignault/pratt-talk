@@ -43,18 +43,18 @@
 *** Prep
    - Regional council members contact their ESDN liaison
    - The member provides a letter granting permission to use their metadata
-   - The provider's contact person gets in touch with ESDN's Metadata Specialist
-   - Who then works with the provider to normalize and standardize their data
+   - The provider's contact person gets in touch with Karen Hwang, ESDN's Digital Projects Librarian and Metadata Specialist
+   - Karen works with the provider to normalize and standardize their data
    - Their metadata is normalized to ESDN's Metadata Application Profile (MAP)
 
 *** Harvest
    - We then ingest their data into REPOX
      - Using various methods and protocols
        - But mostly and ultimately via OAI-PMH
-       - There are a few others such as the Brooklyn Historical Society
-       - They use the museum software Past Perfect, which does not offer OAI-PMH feeds
-       - So they provide us with comma separated value files
-       - We import those into a private Omeka installation
+       - There are a few others such as MoMA (The Museum of Modern Art)
+       - Their software does not offer OAI-PMH feeds
+       - They maintain a Github repository with their collection metadata in various formats
+       - We import the CSV format file into a private Omeka installation
        - We then import their records into REPOX via OAI-PMH from Omeka
 
 *** Transform
@@ -158,8 +158,9 @@
 *** DPLA Exhibitions
     - Available at [[http://dp.la/exhibitions][http://dp.la/exhibitions]]
     - Built on Omeka ([[http://omeka.org][http://omeka.org]])
-    - ESDN will begin providing DPLA exhibition hosting for partners
-      - Later in 2017
+    - ESDN is working on exhibitions on Women's Suffrage and for the Erie Canal Anniversary
+      - Possibly hosted by ESDN
+      - Possibly hosted by DPLA
 
 ***  The ESDN portal
     - Plans to work on a NY state wide search portal
@@ -175,6 +176,7 @@
       - limitations of DPLA API
       - cannot enrich records otherwise
     - extended to integrate additional "external vocabularies"
+      - i.e. Linked Open Data
       - Sub-collection info
       - Council info
       - Build additional reporting and search capabilities
